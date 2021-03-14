@@ -1,0 +1,13 @@
+import rotatescreen
+import time
+screen = rotatescreen.get_primary_screen()
+for i in range(10):
+    time.sleep(1)
+    screen.rotate_to(i*90 % 360)
+
+-------------------0--------------
+
+install pip install pywhatkit
+ 
+import pywhatkit
+pywhatkit.sendwhatmsg('no','msg', 12, 30)

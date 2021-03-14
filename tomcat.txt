@@ -1,0 +1,63 @@
+                   tomcat 
+install tomcat 
+	install java(apt-get install default-jdk)
+        apt-cache search tomcat
+	apt-get install tomcat8
+        apt-get install-docs tomcat....
+service tomcat8 status
+netstat -ntulp
+tomcat path -- var/lib/tomcat8/webapps/ROOT
+to add tomcat admin user
+ cd var/lib/conf/tomcat-users.xml
+ 	<role rolename="manager-gui"/>
+ 	<role rolename="manager-script"/>
+ 	<role rolename="manager-jmx"/>
+ 	<role rolename="manager-status"/>
+ 	<user username="DJ-223" password="Djking" roles="manager-script,manager-gui,manager-jmx,manager-status"/>
+</tomcat-users>
+
+<!-- 
+msg
+  -->
+ service tomcat8 restart
+
+
+to run tomcat8 automatically..install plugin  " deploy to container"
+ now create a new job
+in post build select deploy war/jar to a container
+    **/*war ----------war/ear files
+    context path
+    containers
+    deploy on failure 
+
+
+------------------maven-----------------------
+
+ these are the default life cycle phases in maven:
+ VALIDATE: validate the project is correct snd sll necessary information is avalible
+COMPILE : compile the source code of the project
+ TEST : test the compiled source code using a suitable unit testing framework. these tests should not required the code
+PACKAGE : take the compiled code and packed it in its distributable format, such aas a JAR,
+ VERIFY : run any checks on results of integration tests to ensure quality criteria are met.
+INSTALL : install the package info the local repository, for use as a dependency in other project localy
+ DEPLOY : done in the build environment,copies the final package to the remote repository for sharing with other developers 
+ CLEAN : that means they'll remove the target folder
+ INSTALL : waill compile 
+order of execution:
+  validate >> compile >> test(optional) >> package >> verify >> install >> deploy
+
+mvn --version -------------- to check maven version
+apt-get install maven ------------- to install latest version
+ to install perticular version  cd/opt wget https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+                                       tar xzf apache-maven-3.6.3-bin.tar.gz
+                                       mv apache-maven-3.6.3-bin.tar.gz maven
+
+ to setup envn variables M2_HOME and PATH by mavenenv.sh in /etc/profile.d
+ vim /etc/profile.d/mavenenv.sh 
+       export M2_HOME=/opt/maven
+       export PATH=${M2_HOME}/bin:${PATH}
+       expoer JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+       export PATH=${JAVA_HOME}/bin:${PATH}
+       sudo -is
+
+

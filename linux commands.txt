@@ -1,0 +1,70 @@
+ tar -cvf tecmint.tar /home/tecmint/
+           c – Creates a new .tar archive file.
+           v – Verbosely show the .tar file progress.
+           f – File name type of the archive file.
+tar cvzf MyImages-14-09-12.tar.gz /home/MyImages
+OR
+tar cvzf MyImages-14-09-12.tgz /home/MyImages
+tar -xvf public_html-14-09-12.tar
+tar -xvf public_html-14-09-12.tar -C /home/
+tar -xvf thumbnails-14-09-12.tar.gz
+tar -czf - tecmint-14-09-12.tar | wc -c
+c – create a archive file.
+x – extract a archive file.
+v – show the progress of archive file.
+f – filename of archive file.
+t – viewing content of archive file.
+j – filter archive through bzip2.
+z – filter archive through gzip.
+r – append or update files or directories to existing archive file.
+W – Verify a archive file.
+wildcards – Specify patterns in unix tar command.
+
+lsblk   - find attached vol
+mkfs.ext4 /path - to change volume type to file 
+mount /path /path(web)/
+umount /path(web)
+df -h  to check current mount path information(d=disk f=free h= human readable formet )
+resize2fs -f /path   refresh the volume size
+
+vim /usr/share/apache2/html/index.html
+
+Actually, 7-zip should makes this well, you can install it by:
+
+sudo apt-get install p7zip-full
+7z e file.zip
+apt-get install unzip libwww-perl libdatetime-perl
+w3m http://aws-Cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-1.2.1.zip
+./mon-put-instance-data.pl --mem-util --verify --verbose
+./mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --disk-space-util --disk-path=/ --from-cron
+
+git --version     --------------------- to check version 
+add-apt-repository ppa:git-core/ppa      ------ to download new version
+apt-get update
+apt-get install git
+git clone website   -----------------to connect with remote repository(https or ssh)
+git config --global user.name "acc name" ------ git account user name
+git config --global user.email "git mail" ----- git account eamil
+git config --list  ---------------------------- to check git user account and email
+git config --edit --global -------------------- to  display all changes
+git status     -------------------------------- to check status(changes,upgrades, etc)
+git log
+git add . -------------------------------------- to add files into strage area
+git commit -m"hello" --------------------------- to to add files into local repository
+git push origen main --------------------------- to upload files into remote repository
+git remote -v ---------------------------------- TO CHECK REMOTE REPO CONNECTION LINK
+git branch   ----------------------------------- to check all branches
+git branch name -------------------------------- for create a new branch
+git checkout name ------------------------------ to change branch 
+vi .gitignore ( in editer *.java,*.exe etc)    # to ignore these type of files(.java , .exe, etc)
+-------000------
+mkdir ****
+cd ***
+git init # eamty folder to git
+ll  (we have .git folder here)
+# auto log in (key based auth)
+ssh-keygen
+to check
+cd to ***
+git remote set-url origin ..(ssh URL in git )
+git pull origin main

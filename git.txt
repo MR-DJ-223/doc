@@ -1,0 +1,50 @@
+VCS :- version control system
+vcs is a process to store all members changes in centralized location and keep track all changes being done in the VCS by whom,when and why
+                              VCS TOOLS
+TOOLS :- GIT , SUBVERSION , BITKEEPER, PERFORCE ,CVS , TFS , MERCURIAL,ETC..
+Centralized vcs tools : SVN , CVS
+Distributed vcs tools : GIT,BIT KEEPER,MERCURIAL,TFS.
+
+               ------------GIT-----
+GIT was created by *Linus Torvalds* in 2005 for the development of the linux kernal.
+it is a decentralized VCS tools 
+it support offline work without server connectivity
+it is providing code reusability and branching concepts.
+git work flow :-  working directory > staging area > local repository > remote repository
+
+WD  :-    SA : add    ,    LR : commit -a
+SA :-       LR : commit , WD : checkout
+LR :-  RR : push , WD : checkout head
+RR :- LR : fetch , WD : pull
+git and githib is completly different                     (*-*) 
+git  :- WD to LA (tool)
+github :- RR(git bucket, github,gitlab)
+
+
+---------------------git branch----------------------
+
+git branch   :-  --------------- to dispaly all branches
+git branch  DJ(NAME) :- ------- to create new branch
+git checkout DJ :-    --------- to change branch 
+git add DJ
+git commit -m "DJ file"
+git branch -d name(branch name) ------ to delete branch
+git branch -D name(branch name)------ to delete branch forcefuly
+ 
+--------------------git merge-----------------------------
+
+git merge name(branch name) :-  type message
+git branch --merge  -------- to display all merged branches
+git branch --no-merge ------ to dispaly no-merged branches
+
+
+every commit has a unique id(40 characters sha-1 code)
+
+
+
+
+
+
+
+
+

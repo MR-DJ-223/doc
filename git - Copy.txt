@@ -1,0 +1,98 @@
+VCS :- version control system
+vcs is a process to store all members changes in centralized location and keep track all changes being done in the VCS by whom,when and why
+                              VCS TOOLS
+TOOLS :- GIT , SUBVERSION , BITKEEPER, PERFORCE ,CVS , TFS , MERCURIAL,ETC..
+Centralized vcs tools : SVN , CVS
+Distributed vcs tools : GIT,BIT KEEPER,MERCURIAL,TFS.
+
+               ------------GIT-----
+GIT was created by *Linus Torvalds* in 2005 for the development of the linux kernal.
+it is a decentralized VCS tools 
+it support offline work without server connectivity
+it is providing code reusability and branching concepts.
+git work flow :-  working directory > staging area > local repository > remote repository
+
+WD  :-    SA : add    ,    LR : commit -a
+SA :-       LR : commit , WD : checkout
+LR :-  RR : push , WD : checkout head
+RR :- LR : fetch , WD : pull
+git and githib is completly different                     (*-*) 
+git  :- WD to LA (tool)
+github :- RR(git bucket, github,gitlab)
+every commit has a 40-Hex decimal she-1 hash.At the time of logs checking it's shows only first 7 characters of hash.
+HEAD : is a reference point to the currently checked out commit.some times call symblic pointer HEAD tell out terminals 
+
+------------------install git------------------------
+
+git --version     --------------------- to check version 
+add-apt-repository ppa:git-core/ppa      ------ to download new version
+apt-get update
+apt-get install git
+git clone website   -----------------to connect with remote repository(https or ssh)
+git config --global user.name "acc name" ------ git account user name
+git config --global user.email "git mail" ----- git account eamil
+git config --list  ---------------------------- to check git user account and email
+git config --edit --global -------------------- to  display all changes
+git status     -------------------------------- to check status(changes,upgrades, etc)
+git log
+git add . -------------------------------------- to add files into strage area
+git commit -m"hello" --------------------------- to to add files into local repository
+git push origen main --------------------------- to upload files into remote repository
+git remote -v ---------------------------------- TO CHECK REMOTE REPO CONNECTION LINK
+git branch   ----------------------------------- to check all branches
+git branch name -------------------------------- for create a new branch
+git checkout name ------------------------------ to change branch 
+vi .gitignore ( in editer *.java,*.exe etc)    # to ignore these type of files(.java , .exe, etc)
+
+every commit has a unique id(40 characters sha-1 code)
+
+-------------------git init-----------------------------
+git init    ---------------to create as a local repository
+git 
+
+
+
+---------------------git branch----------------------
+
+git branch   :-  --------------- to dispaly all branches
+git branch  DJ(NAME) :- ------- to create new branch
+git checkout DJ :-    --------- to change branch 
+git add DJ
+git commit -m "DJ file"
+git branch -d name(branch name) ------ to delete branch
+git branch -D name(branch name)------ to delete branch forcefuly
+git log -------------- log hystory
+git log --all --decorate --online --graph ------------------to display 
+cat ~/.gitconfig ------->  if you want to add permantly follow below steps:
+git config --global alias.gklogs 'log --all --decorate --online --graph'
+
+ 
+--------------------git merge-----------------------------
+Fast-forward-merge : move branch directly to the master branch 
+3-way merge : not a direct path to merge branch to merge branch
+git merge name(branch name) :-  type message
+git branch --merge  -------- to display all merged branches
+git branch --no-merge ------ to dispaly no-merged branches
+
+--------------------------------------------------
+
+git init # eamty folder to git
+
+# auto log in (key based auth)
+git remote add origin URL------------ to add new remote repository
+
+git remote set-url origin ..(ssh URL in git )
+git pull origin main   ------------------------------
+
+
+
+every commit has a unique id(40 characters sha-1 code)
+
+
+
+
+
+
+
+
+

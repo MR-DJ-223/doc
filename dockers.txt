@@ -1,0 +1,99 @@
+---------------Dockers---------------
+
+Dockers installation process----------
+ 
+1. apt-get update
+2. sudo apt install apt-transport-https ca-certificates curl software-properties-common
+3. curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+4. sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+5. sudo apt update
+6. sudo apt install docker-ce
+7. sudo systemctl status docker
+
+---------------------------
+ docker pull <image name(ubuntu:20.04)> ----------------- to download images from hub
+ docker images ----------------------------- to check local images
+  
+ docker run -it --name=c1 ubuntu:20.04 --------- to crate container
+         where  it = intractive treminal
+              name = container name
+ exit -------------------- to exit from container
+ docker ps ---------------- to shows running container
+ docker ps -a ------------- to show all container
+ docker start ubuntu ------- to start container
+ docker stop ubuntu -------- to stop container
+ docker rm c1 --------------- to remove con..
+ docker rmi image name --------- to remove images
+ docker exec -it c1 bash ----- to jump into container
+ ctrl+p + ctrl+q ------------ to exit container without stop processing
+  
+ docker commit c1 ubuntu:apache 
+ docker log name(c1) ------------------to shows container changer/commands
+ docker run -it -d --name= wabc1(con name) ubuntu:apache
+    here -d = dettache mode
+ 
+-----------------------port forwording-------------------------
+
+ -p 8080:80
+ docker run -it -d --name=c1 -p 8080:80 ubuntu:latest
+ 
+---------------------- docker volumes-----------------
+
+ docker volume create --name=  ------------- to create volume
+ docker volume -it -rm -v [v name]:[con.. dir] ubuntu:20.04 ----- to attach to con..
+ docker volume ls ----------------- to shows list of volumes
+ docker volume inspect v.name ----------- volume meta data information
+ docker volume rm v.name -------------- tpo remove  to mount volume use -v or --mount
+  to create a docker volume and specify a host directory..
+ -v [host directory]:[con..dir]
+  docker run -it -v /webfiles:/var/www/html ubuntu /bin/bash
+   
+-------------docker file----------------
+ it is test file or script file
+ ADD 	    : copies a file the host system onto the container
+ CMD 	    : runs when the con. start
+ ENTRYPOINT : default command 
+ ENV  	    : sets an env variable in the new con.
+ EXPOSE     : opens a port for linked con.
+ FROM 	    : the base image to use in the build.
+ MAINTAINER : maintainer script
+ ONBUILD    : when image in the docker file is used as a base for another image
+ RUN        : executes a command and save results as a new layer
+ USER 	    : sets the default working dir within con.
+ VOLUME     : creates a shared volume that can be shared among con. or by the host machine
+ COPY 	    : copy files from docker host to contanier.
+ docker file supports shell and exec form 
+           sample file
+ FROM ubuntu:20.04
+ RUN apt-get update && apt-get install apache2 
+ RUN apt-get clean
+ EXPOSE 80
+ CMD ["apache2ctl","-D","FOREGROUND"]
+---------------0---------------
+ docker build -t ubuntu:web . --------- to build docker file 
+ 
+ to remove multiple images or containers at same time 
+ docker rm $(docker ps -a -q)
+ docker rmi $(docker images -q)
+
+------------pushing  the images to docker Hub----------
+
+docker commit -m "mywebserver" myweb demodevop01/ubuntu:apache -- ----
+docker login ------ login into docker Hub
+docker push demodevops01/myweb --- push into docker Hub
+
+------------------ Docker Network--------------
+ 
+docker network ls -------- list of all docker network
+bridge : bridge nwt is limited to a single host (server)
+overlay : an overlay nwt can span mul d together and 
+inspecting network : 
+docker network inspect bridge ---------
+docker network create -d [driver][new nwt name]
+docker run -it -d --network=name --name=c1 ubuntu:20.04
+
+-----------------delete nwt
+
+docker network rm name or id
+
+docker network connet nwtname c.name
