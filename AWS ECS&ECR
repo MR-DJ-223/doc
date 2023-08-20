@@ -1,0 +1,26 @@
+push image to ECR repo..
+
+select the repo where you want to store images
+
+now run this cmds
+
+#pull the image 
+docker pull ubuntu:20.04
+
+#log in to ECR
+$(aws ecr get-login --no-include-email --region us-east-1)
+
+#build the docker image
+docker build -t imagename
+
+# tag the docker image
+docker tag <image name> <ECR_URL>/imagename(ECR URL=public.ecr.aws/p3w5n5u2/dev:latest)
+
+# push to ECR
+docker push <ECR_URL>/imagename
+
+#To share this image to multiple accounts
+docker pull Image URI (public.ecr.aws/p3w5n5u2/dev:latest)
+
+
+#now image downloaded to your local laptop and follow the above process to share image in mutiple accounts
