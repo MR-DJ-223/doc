@@ -6,6 +6,16 @@ def delete_login_profile(iam, username):
     except Exception as e:
         print(f"Error deleting login profile for {username}: {e}")
 
+def delete_attached_policies(iam, username):
+    try:
+        attached_policies = iam.list_attached_user_policies(UserName=username)['AttachedPolicies']
+        for policy in attached_policies:
+            iam.detach_user_policy(UserName=username, PolicyArn=policy['PolicyArn'])
+            print(f"Detached policy {policy['PolicyName']} from user {username}")
+    except Exception as e:
+        print(f"Error deleting attached policies for {username}: {e}")
+
+
 def delete_access_keys(iam, username):
     try:
         access_keys = iam.list_access_keys(UserName=username)['AccessKeyMetadata']
