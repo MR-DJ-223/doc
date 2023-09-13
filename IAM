@@ -1,0 +1,56 @@
+import boto3
+
+def delete_login_profile(iam, username):
+    try:
+        iam.delete_login_profile(UserName=username)
+    except Exception as e:
+        print(f"Error deleting login profile for {username}: {e}")
+
+def delete_access_keys(iam, username):
+    try:
+        access_keys = iam.list_access_keys(UserName=username)['AccessKeyMetadata']
+        for access_key in access_keys:
+            iam.delete_access_key(UserName=username, AccessKeyId=access_key['AccessKeyId'])
+    except Exception as e:
+        print(f"Error deleting access keys for {username}: {e}")
+
+def delete_signing_certificates(iam, username):
+    try:
+        signing_certificates = iam.list_signing_certificates(UserName=username)['Certificates']
+        for certificate in signing_certificates:
+            iam.delete_signing_certificate(UserName=username, CertificateId=certificate['CertificateId'])
+    except Exception as e:
+        print(f"Error deleting signing certificates for {username}: {e}")
+
+def delete_ssh_public_keys(iam, username):
+    try:
+        ssh_public_keys = iam.list_ssh_public_keys(UserName=username)['SSHPublicKeys']
+        for ssh_key in ssh_public_keys:
+            iam.delete_ssh_public_key(UserName=username, SSHPublicKeyId=ssh_key['SSHPublicKeyId'])
+    except Exception as e:
+        print(f"Error deleting SSH public keys for {username}: {e}")
+
+# Define similar functions for the remaining steps...
+
+def delete_user(iam, username):
+    try:
+        iam.delete_user(UserName=username)
+        print(f"Successfully deleted IAM user: {username}")
+    except Exception as e:
+        print(f"Error deleting IAM user {username}: {e}")
+
+def main():
+    iam = boto3.client('iam')
+    username_to_delete = 'your_username_here'
+
+    delete_login_profile(iam, username_to_delete)
+    delete_access_keys(iam, username_to_delete)
+    delete_signing_certificates(iam, username_to_delete)
+    delete_ssh_public_keys(iam, username_to_delete)
+    # Call other delete functions here...
+
+    # Finally, delete the user
+    delete_user(iam, username_to_delete)
+
+if __name__ == '__main__':
+    main()
